@@ -176,6 +176,8 @@ body {
   display: inline-flex;
   gap: 10px;
   transition: transform 0.5s ease;
+  flex-wrap: nowrap; /* Garante que os cartazes fiquem em linha */
+  width: 100%; /* Força a ocupação total do contêiner */
 }
 
 .movie-card {
@@ -187,6 +189,7 @@ body {
   transition: transform 0.2s ease;
   cursor: pointer;
   display: inline-block;
+  flex-shrink: 0; /* Impede que os cartazes encolham */
 }
 
 .movie-card:hover {
@@ -240,9 +243,15 @@ body {
     margin-left: 0;
     padding: 20px;
   }
+  .movie-list {
+    display: flex; /* Muda para flex para melhor controle */
+    flex-wrap: nowrap; /* Mantém em linha única */
+    overflow-x: auto; /* Permite rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos móveis */
+  }
   .movie-card {
-    width: 45%;
-    margin-right: 5%;
+    width: 150px; /* Reduz o tamanho para caber mais na tela */
+    margin-right: 10px; /* Ajusta o espaçamento */
   }
 }
 
@@ -263,10 +272,10 @@ body {
 .popup-content {
   position: relative;
   background-color: #111;
-  padding: 20px; /* Reduzido de 200px para 20px */
+  padding: 20px;
   border-radius: 10px;
-  max-width: 90%; /* Aumentado de 80% para 90% */
-  max-height: 90%; /* Aumentado de 80% para 90% */
+  max-width: 90%;
+  max-height: 90%;
   overflow: auto;
   text-align: center;
 }
@@ -285,13 +294,13 @@ body {
 .media-container video {
   width: 100%;
   height: auto;
-  max-height: 70vh; /* Mantido para vídeos */
+  max-height: 70vh;
 }
 
 .media-container iframe {
-  width: 100%; /* Aumentado para ocupar toda a largura disponível */
-  height: 80vh; /* Aumentado de auto para 80vh para PDFs */
-  max-height: 85vh; /* Ajustado para caber no popup */
+  width: 100%;
+  height: 80vh;
+  max-height: 85vh;
   border: none;
 }
 
