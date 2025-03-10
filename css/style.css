@@ -229,29 +229,54 @@ body {
   right: 10px;
 }
 
+/* Botão de Menu Mobile */
+.menu-toggle {
+  display: none; /* Escondido por padrão na versão desktop */
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #0000ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
 /* Estilos Responsivos */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
   }
   .sidebar {
-    width: 100%;
-    position: static;
-    height: auto;
+    width: 260px; /* Largura fixa para a sidebar */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -260px; /* Escondida fora da tela por padrão */
+    transition: left 0.3s ease; /* Transição suave */
+    z-index: 1000;
+  }
+  .sidebar.active {
+    left: 0; /* Aparece ao ativar */
   }
   .content {
     margin-left: 0;
     padding: 20px;
   }
   .movie-list {
-    display: flex; /* Muda para flex para melhor controle */
-    flex-wrap: nowrap; /* Mantém em linha única */
-    overflow-x: auto; /* Permite rolagem horizontal */
-    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos móveis */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .movie-card {
-    width: 150px; /* Reduz o tamanho para caber mais na tela */
-    margin-right: 10px; /* Ajusta o espaçamento */
+    width: 150px;
+    margin-right: 10px;
+  }
+  .menu-toggle {
+    display: block; /* Visível apenas na versão mobile */
   }
 }
 
